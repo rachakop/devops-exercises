@@ -2231,7 +2231,21 @@ MemAvailable - The amount of available memory for new workloads (without pushing
 <details>
 <summary>Using sed, extract the date from the following line: <code>201.7.19.90 - - [05/Jun/1985:13:42:99 +0000] "GET /site HTTP/1.1" 200 32421</code></summary><br><b>
 
-`echo $line | sed 's/.*\[//g;s/].*//g;s/:.*//g'`
+`echo $line | sed 's/.*\[//g;s/].*//g;s/:.*//g'` <br>
+
+in abcd, use sed command replace c with a <br>
+echo "abcd" | sed 's/c/a/' <br>
+
+If the letter "c" appears more than once and you want to replace every instance, add a g at the end: <br>
+
+echo "abcc" | sed 's/c/a/g' <br>
+# Output: abaa <br>
+
+reverse the string <br>
+
+echo "abcd" | awk '{ for(i=length; i>0; i--) printf "%s", substr($0,i,1); print "" }'
+
+ 
 </b></details>
 
 <a name="questions-linux-misc"></a>
