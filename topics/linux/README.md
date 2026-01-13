@@ -1888,15 +1888,15 @@ Hypervisor supported [docs](https://libvirt.org/drivers.html)
 ### AWK
 
 <details>
-ubuntu:~$ cat pr.txt
-name employee date address
-pra  hcl      2026 jk arcade
-  ubuntu:~$ awk 'NR == 2' pr.txt
-pra  hcl      2026 jk arcade
-ubuntu:~$ awk 'NR % 2 == 0' pr.txt
-pra  hcl      2026 jk arcade
-ubuntu:~$ awk 'NR % 2 != 0' pr.txt
-name employee date address
+ubuntu:~$ cat pr.txt <br>
+name employee date address <br>
+pra  hcl      2026 jk arcade <br>
+  ubuntu:~$ awk 'NR == 2' pr.txt <br>
+pra  hcl      2026 jk arcade <br>
+ubuntu:~$ awk 'NR % 2 == 0' pr.txt <br>
+pra  hcl      2026 jk arcade<br>
+ubuntu:~$ awk 'NR % 2 != 0' pr.txtn <br>
+name employee date address <br>
 
 
 <summary>What the <code>awk</code> command does? Have you used it? What for?</summary><br><b>
@@ -1907,13 +1907,13 @@ From Wikipedia: "AWK is domain-specific language designed for text processing an
 <details>
 <summary>How to print the 4th column in a file?</summary><br><b>
 
-`awk '{print $4}' file`
+`awk '{print $4}' file` <br>
 </b></details>
 
 <details>
 <summary>How to print every line that is longer than 79 characters?</summary><br><b>
 
-`awk 'length($0) > 79' file`
+`awk 'length($0) > 79' file` <br>
 </b></details>
 
 <details>
@@ -1931,14 +1931,17 @@ From Wikipedia: "AWK is domain-specific language designed for text processing an
 
 Using system calls
 </b></details>
-awk 'function is_prime(n, i) {
-    if (n < 2) return 0;
-    for (i = 2; i*i <= n; i++) {
-        if (n % i == 0) return 0;
-    }
-    return 1;
-}
-is_prime(NR)' filename
+awk 'function is_prime(n, i) { <br>
+    if (n < 2) return 0; <br>
+    for (i = 2; i*i <= n; i++) { <br>
+        if (n % i == 0) return 0; <br>
+    } <br>
+    return 1; <br>
+} <br>
+is_prime(NR)' filename <br>
+NR: A built-in awk variable that tracks the current line number. <br>
+is_prime(NR): This calls a custom function that returns 1 (true) if the line number is prime. <br>
+
 <a name="questions-linux-system-calls"></a>
 ### System Calls
 
