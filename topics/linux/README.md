@@ -1888,6 +1888,17 @@ Hypervisor supported [docs](https://libvirt.org/drivers.html)
 ### AWK
 
 <details>
+ubuntu:~$ cat pr.txt
+name employee date address
+pra  hcl      2026 jk arcade
+  ubuntu:~$ awk 'NR == 2' pr.txt
+pra  hcl      2026 jk arcade
+ubuntu:~$ awk 'NR % 2 == 0' pr.txt
+pra  hcl      2026 jk arcade
+ubuntu:~$ awk 'NR % 2 != 0' pr.txt
+name employee date address
+
+
 <summary>What the <code>awk</code> command does? Have you used it? What for?</summary><br><b>
 
 From Wikipedia: "AWK is domain-specific language designed for text processing and typically used as a data extraction and reporting tool"
@@ -1912,6 +1923,7 @@ From Wikipedia: "AWK is domain-specific language designed for text processing an
 <details>
 <summary>What is the difference between find and locate?</summary><br><b>
   find . -name "*.txt" -mtime -7
+  
 </b></details>
 
 <details>
