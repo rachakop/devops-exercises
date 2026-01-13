@@ -1931,7 +1931,14 @@ From Wikipedia: "AWK is domain-specific language designed for text processing an
 
 Using system calls
 </b></details>
-
+awk 'function is_prime(n, i) {
+    if (n < 2) return 0;
+    for (i = 2; i*i <= n; i++) {
+        if (n % i == 0) return 0;
+    }
+    return 1;
+}
+is_prime(NR)' filename
 <a name="questions-linux-system-calls"></a>
 ### System Calls
 
