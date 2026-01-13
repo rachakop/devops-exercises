@@ -972,6 +972,14 @@ There are many answers for this question. One way is running `df -T`
 
 <details>
 <summary>What is a swap partition? What is it used for?</summary><br><b>
+  A swap partition is a dedicated area on a hard disk drive (HDD) or solid-state drive (SSD) that is used by the Linux kernel when the physical Random Access Memory (RAM) is full [1]. It functions as a type of virtual memory. 
+What it is
+The swap partition is a reserved segment of permanent storage that the operating system can use as temporary RAM. It is formatted specifically to store memory pages that have been temporarily moved out of physical RAM. <br>
+What it is used for<br>
+The primary uses of a swap partition are:
+Virtual Memory Extension: When your physical RAM is fully utilized, the Linux kernel moves less-used data blocks (called "pages") from RAM to the swap space [1]. This prevents applications from crashing due to memory exhaustion and allows the system to continue operating, albeit more slowly. The process of moving data between RAM and swap is known as paging or swapping.<br>
+System Hibernation (Suspend-to-Disk): When a user hibernates their computer, the entire current state of the RAM is written to the swap partition [1]. When the computer is powered back on, the system loads this data from the swap partition back into RAM, resuming the exact previous session. This function requires a swap partition at least as large as your physical RAM.<br>
+Optimizing Performance (Even with ample RAM): Many system administrators still configure a small swap space even on systems with lots of RAM (e.g., 32GB+). This allows the kernel to offload very old, infrequently accessed memory pages to swap, freeing up more physical RAM for active, performance-critical tasks 
 </b></details>
 
 <details>
