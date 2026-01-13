@@ -995,7 +995,30 @@ Optimizing Performance (Even with ample RAM): Many system administrators still c
 </b></details>
 
 <details>
-<summary>You are trying to create a new file but you get "File system is full". You check with df for free space and you see you used only 20% of the space. What could be the problem?</summary><br><b>
+<summary>You are trying to create a new file but you get "File system is full". You check with df for free space and you see you used only 20% of the space. What could be the problem?
+
+If df shows only 20% space used but you receive a "File system is full" error, the most likely cause is Inode Exhaustion.<br>
+1. Inode Exhaustion (Most Likely)
+In Linux, every file and directory requires an inode (index node) to store its metadata. A file system has a finite number of inodes created at the time of formatting. 
+The Problem: If you have millions of very small files (like logs, session files, or email spools), you can run out of inodes even if the actual data takes up very little disk space.<br>
+How to check: Run the command df -i. If the IUse% is at or near 100%, you have run out of inodes. 
+2. Files Deleted but Still Open<br>
+When a file is deleted in Linux, its directory entry is removed, but the disk space is not actually freed if a process still has that file open. 
+The Problem: Large log files that were deleted (e.g., with rm) but are still being written to by a running service will continue to occupy space that df sees as used, but du (which scans directories) will not see.
+How to check: Run sudo lsof | grep deleted. This will show processes holding onto deleted files. Restarting the process or the system will reclaim the space. 
+3. Files Hidden Under Mount Points<br>
+If you mount a new partition or drive over a directory that already contains data, the original files become "hidden" but continue to occupy space on the underlying disk. 
+The Problem: df reports the true state of the underlying disk, but du only sees the files in the currently mounted partition.
+How to fix: Unmount the partition to see if there is "hidden" data in the mount point directory. <br>
+4. Reserved Space for Root
+Most Linux filesystems (like ext4) reserve about 5% of the total space for the root user. 
+The Problem: If you are logged in as a normal user and the disk usage hits 95%, you will receive a "File system full" error even though df shows some space remains. 
+
+
+
+
+
+</summary><br><b>
 </b></details>
 
 <details>
