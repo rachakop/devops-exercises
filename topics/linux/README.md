@@ -1911,6 +1911,7 @@ From Wikipedia: "AWK is domain-specific language designed for text processing an
 
 <details>
 <summary>What is the difference between find and locate?</summary><br><b>
+  find . -name "*.txt" -mtime -7
 </b></details>
 
 <details>
